@@ -1,0 +1,5 @@
+C:\Projects\MVC3RestAPI\MVC3RestAPI\REST\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\MVC3RestAPI\MVC3RestAPI\REST\bin\Debug\REST.dll
+C:\Projects\MVC3RestAPI\MVC3RestAPI\REST\bin\Debug\REST.pdb
+C:\Projects\MVC3RestAPI\MVC3RestAPI\REST\obj\Debug\REST.dll
+C:\Projects\MVC3RestAPI\MVC3RestAPI\REST\obj\Debug\REST.pdb

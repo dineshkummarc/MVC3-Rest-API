@@ -1,0 +1,201 @@
+﻿@{
+    ViewBag.Title = "User Api";
+}
+
+@section head {    
+    <script type="text/javascript">
+        // function converting JSON objects to string for display purposes
+        // Code from: http://www.sitepoint.com/blogs/2009/08/19/javascript-json-serialization/
+        JSON.stringify = JSON.stringify || function (obj) {
+            var t = typeof (obj);
+            if (t != "object" || obj === null) {
+                // simple data type
+                if (t == "string") obj = '"'+obj+'"';
+                return String(obj);
+            }
+            else {
+                // recurse array or object
+                var n, v, json = [], arr = (obj && obj.constructor == Array);
+                for (n in obj) {
+                    v = obj[n]; t = typeof(v);
+                    if (t == "string") v = '"'+v+'"';
+                    else if (t == "object" && v !== null) v = JSON.stringify(v);
+                    json.push((arr ? "" : '"' + n + '":') + String(v));
+                }
+                return (arr ? "[" : "{") + String(json) + (arr ? "]" : "}");
+            }
+        };
+    </script>
+
+    <script type="text/javascript" >
+
+        $(document).ready(function () {
+
+            // LIST handlers demo
+            $("#list-json").click(function () {
+                // jsonp sample execution (possible cross-domain)
+                $.getJSON("/api/user?jsoncallback=?", function (json) {
+                    $("#list-result").html(JSON.stringify(json));
+                });
+            });
+
+
+            $("#list-xml").click(function () {
+                $.ajax({
+                    url: "/api/user",
+                    dataType: "text",
+                    success: function (xml) {
+                        $("#list-result").text(xml);
+                    }
+                });
+            });
+
+            // Sample DATA - json & xml
+            var jsonUser = [{ "Email": "json@lome.pl", "Name": "Hello World"}];
+            var xmlUser = '<ArrayOfUser>' +
+                            '<User>' +
+                            '<Email>xml@lome.pl</Email>' +
+                            '<Name>Hello world</Name>' +
+                            '</User>' +'</ArrayOfUser>';
+
+            // CREATE handlers demo
+            $("#create-json").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: '/api/user',
+                    data: JSON.stringify(jsonUser),
+                    contentType: "application/json",
+                    success: function (json) {
+                        $("#create-result").html(JSON.stringify(json));
+                    }
+                });
+            });
+
+            $("#create-xml").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: '/api/user',
+                    data: xmlUser,
+                    contentType: "text/xml",
+                    dataType: "text",
+                    success: function (xml) {
+                        $("#create-result").text(xml);
+                    }
+                });
+            });
+
+            // READ handlers demo
+            $("#read-json").click(function () {
+                // jsonp sample execution (possible cross-domain)
+                $.getJSON("/api/user/1?jsoncallback=?", function (json) {
+                    $("#read-result").html(JSON.stringify(json));
+                });
+            });
+
+
+            $("#read-xml").click(function () {
+                $.ajax({
+                    url: "/api/user/1",
+                    dataType: "text",
+                    success: function (xml) {
+                        $("#read-result").text(xml);
+                    }
+                });
+            });
+
+            // UPDATE
+            $("#update-json").click(function () {
+                $.ajax({
+                    type: "PUT",
+                    url: '/api/user',
+                    data: JSON.stringify(jsonUser),
+                    contentType: "application/json",
+                    success: function (json) {
+                        $("#update-result").html(JSON.stringify(json));
+                    }
+                });
+            });
+
+            $("#update-xml").click(function () {
+                $.ajax({
+                    type: "PUT",
+                    url: '/api/user',
+                    data: xmlUser,
+                    contentType: "text/xml",
+                    dataType: "text",
+                    success: function (xml) {
+                        $("#update-result").text(xml);
+                    }
+                });
+            });
+
+            // DELETE
+            $("#delete-json").click(function () {
+                $.ajax({
+                    type: "DELETE",
+                    url: "/api/user/1?json=true",                    
+                    success: function (json) {
+                        $("#delete-result").html(JSON.stringify(json));
+                    }
+                });
+            });
+
+            $("#delete-xml").click(function () {
+                $.ajax({
+                    type: "DELETE",
+                    url: "/api/user/1",
+                    dataType: "text",
+                    success: function (xml) {
+                        $("#delete-result").text(xml);
+                    }
+                });
+            });
+        });
+        
+    </script>
+}
+
+<h1>User API</h1>
+
+
+<h2>List</h2>
+<p>GET /api/user</p>
+<p>Returns a user collection</p>
+<input type="button" value="json" id="list-json" />
+<input type="button" value="xml" id="list-xml" />
+<pre id="list-result"></pre>
+<hr />
+
+<h1>CRUD</h1>
+
+<h2>Create</h2>
+<p>POST /api/user</p>
+<p>Creates a user and returns a generic result object</p>
+<input type="button" value="json" id="create-json" />
+<input type="button" value="xml" id="create-xml" />
+<pre id="create-result"></pre>
+<hr />
+
+<h2>Read</h2>
+<p>GET /api/user/[user_id]</p>
+<p>Returns a single User object</p>
+<input type="button" value="json" id="read-json" />
+<input type="button" value="xml" id="read-xml" />
+<pre id="read-result"></pre>
+<hr />
+
+<h2>Update</h2>
+<p>PUT /api/user/[user_id]</p>
+<p>Uploads the following XML or JSON using HTTP POST</p>
+<input type="button" value="json" id="update-json" />
+<input type="button" value="xml" id="update-xml" />
+<pre id="update-result"></pre>
+<hr />
+
+<h2>Delete</h2>
+<p>DELETE /api/user/[user_id]</p>
+<p>Deletes a single user </p>
+<input type="button" value="json" id="delete-json" />
+<input type="button" value="xml" id="delete-xml" />
+<pre id="delete-result"></pre>
+<hr />

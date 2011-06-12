@@ -1,0 +1,10 @@
+C:\Projects\MVC3RestAPI\MVC3RestAPI\MVC3RestAPI\bin\MVC3RestAPI.dll
+C:\Projects\MVC3RestAPI\MVC3RestAPI\MVC3RestAPI\bin\MVC3RestAPI.pdb
+C:\Projects\MVC3RestAPI\MVC3RestAPI\MVC3RestAPI\bin\EntityFramework.dll
+C:\Projects\MVC3RestAPI\MVC3RestAPI\MVC3RestAPI\bin\EntityFramework.xml
+C:\Projects\MVC3RestAPI\MVC3RestAPI\MVC3RestAPI\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\MVC3RestAPI\MVC3RestAPI\MVC3RestAPI\obj\Debug\MVC3RestAPI.dll
+C:\Projects\MVC3RestAPI\MVC3RestAPI\MVC3RestAPI\obj\Debug\MVC3RestAPI.pdb
+C:\Projects\MVC3RestAPI\MVC3RestAPI\MVC3RestAPI\bin\REST.dll
+C:\Projects\MVC3RestAPI\MVC3RestAPI\MVC3RestAPI\bin\Newtonsoft.Json.dll
+C:\Projects\MVC3RestAPI\MVC3RestAPI\MVC3RestAPI\bin\REST.pdb
